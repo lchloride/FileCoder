@@ -1,0 +1,16 @@
+﻿生成启动时间为 2016/11/22 11:26:46。
+     1>项目“E:\computer science\FileCoder\FileCoder\FileCoder.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Debug\FileCoder.pch" /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt FileCoderDlg.cpp
+         FileCoderDlg.cpp
+       Link:
+         E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\computer science\FileCoder\Debug\FileCoder.exe" /INCREMENTAL /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\Include\Manifest\dpiaware.manifest" /Debug /PDB:"E:\computer science\FileCoder\Debug\FileCoder.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\computer science\FileCoder\Debug\FileCoder.lib" /MACHINE:X86 Debug\FileCoder.res
+         Debug\FileCoder.obj
+         Debug\FileCoderDlg.obj
+         Debug\stdafx.obj
+         FileCoder.vcxproj -> E:\computer science\FileCoder\Debug\FileCoder.exe
+     1>已完成生成项目“E:\computer science\FileCoder\FileCoder\FileCoder.vcxproj”(Build 个目标)的操作。
+
+已成功生成。
+
+已用时间 00:00:01.53

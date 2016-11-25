@@ -1,0 +1,22 @@
+﻿生成启动时间为 2016/11/25 0:37:18。
+     1>项目“E:\computer science\FileCoder\FileCoder\FileCoder.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D _WINDOWS /D NDEBUG /D _UNICODE /D UNICODE /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Release\FileCoder.pch" /Fo"Release\\" /Fd"Release\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt FileCoderDlg.cpp
+         FileCoderDlg.cpp
+       Link:
+         E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\computer science\FileCoder\Release\FileCoder.exe" /INCREMENTAL:NO /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\Include\Manifest\dpiaware.manifest" /Debug /PDB:"E:\computer science\FileCoder\Release\FileCoder.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG:incremental /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\computer science\FileCoder\Release\FileCoder.lib" /MACHINE:X86 /SAFESEH Release\FileCoder.res
+         Release\FileCoder.obj
+         Release\FileCoderDlg.obj
+         Release\LoadStr.obj
+         Release\stdafx.obj
+         正在生成代码
+         2 of 272 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
+           0 functions were new in current compilation
+           1 functions had inline decision re-evaluated but remain unchanged
+         已完成代码的生成
+         FileCoder.vcxproj -> E:\computer science\FileCoder\Release\FileCoder.exe
+     1>已完成生成项目“E:\computer science\FileCoder\FileCoder\FileCoder.vcxproj”(Build 个目标)的操作。
+
+已成功生成。
+
+已用时间 00:00:08.17
