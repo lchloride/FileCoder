@@ -69,7 +69,7 @@ int main(int argc, char const *argv[])
 		//printf("%s\n", inipath);
 		if (fin_num == NULL)
 		{
-			printf("Missing \"number.ini\"\n");
+			printf("Missing number.ini\n");
 			fclose(fin);
 			_getch();
 			return 0;
@@ -85,6 +85,13 @@ int main(int argc, char const *argv[])
 			fprintf(fin_num, "%d\n", last_num);
 		}
 		fclose(fin_num);
+		struct tm * timeinfo;
+  		char fbuffer [80];
+  		timeinfo = localtime (&st);
+
+  		strftime (fbuffer,80,"_FILECODER%Y%m%d%H%M%S",timeinfo);
+  		printf("%s\n", fbuffer);
+		strcat(outfilename, fbuffer);
 		char a1, a2;
 		int count=0;
 		fout = fopen(strcat(strcpy(outfilename1,outfilename), ".bak"), "wb");
@@ -103,17 +110,17 @@ int main(int argc, char const *argv[])
 			ful_filename[i-gang_pos-1] = path[i];
 		ful_filename[filename_leng] = '\0';
 		//printf("%s\n", ful_filename);
-		//向编码文件写入文件头
-		fwrite(&filename_leng,sizeof(int), 1, fout );//文件名长度
-		fwrite(&VERSION,sizeof(int), 1, fout );//版本号
-		fwrite(&count,sizeof(int), 1, fout ); //文件大小(目前为0，只是占一个位置)
-		fwrite(ful_filename,sizeof(char), strlen(ful_filename), fout );//编码前的文件名字符串
-		//向编码信息文件写入文件头
+
+		fwrite(&filename_leng,sizeof(int), 1, fout );
+		fwrite(&VERSION,sizeof(int), 1, fout );
+		fwrite(&count,sizeof(int), 1, fout ); 
+		fwrite(ful_filename,sizeof(char), strlen(ful_filename), fout );
+
 		fwrite(&filename_leng,sizeof(int), 1, fout_name );
 		fwrite(&VERSION,sizeof(int), 1, fout_name );
 		fwrite(&count,sizeof(int), 1, fout_name ); 
 		fwrite(ful_filename,sizeof(char), strlen(ful_filename), fout_name );
-		//向日志文件写入文件信息
+		
 		//fwrite(&count,sizeof(int), 1, flog );//大小
 		int path_leng = strlen(path);//原文件名长度
 		fwrite(&path_leng, sizeof(int), 1, flog);//原文件名
@@ -127,12 +134,14 @@ int main(int argc, char const *argv[])
 		fwrite(&st,sizeof(time_t), 1, flog );//加入时间
  		fwrite(&VERSION,sizeof(int), 1, flog );//版本
 
- 		//向编码文件写入编码后的内容
+
 		delete[] ful_filename;
 		int rc1=1132,rc2=-96;
 		bool set = true;
 		/*fwrite( &rc1, sizeof( int ), 1, fout );
 		fwrite( &rc2, sizeof( int ), 1, fout );*/
+		char buffer[1025]={0};
+		int l = 0;
 		while( true )  
 		{  
 			rc1 = fread(&a1,sizeof(char),MAXLEN,fin);
@@ -142,27 +151,34 @@ int main(int argc, char const *argv[])
 			//printf("%d %d\n", rc1, rc2);
 			if (rc2==0)
 			{set=false;break;}
-			
-			fwrite(&a2,sizeof(char), rc2, fout );
-			fwrite(&a1,sizeof(char), rc1, fout );  
-			
-			if (count%(1<<19)==0)//每1MB输出一次提示信息
+			//l = strlen(buffer);
+			buffer[l++] = a2;
+			buffer[l++] = a1;
+			if ((count+1) % 512==0)
+			{fwrite(buffer,sizeof(char), 1024, fout );
+			 memset(buffer, 0, 1025);
+			 l=0;
+			}
+			if (count%(1<<19)==0)
 				printf("Processing:%dMB Start!\n",count/(1<<19));
 			count++;
 			// if (count==1)
 			// 	break;
 		} 
 		//printf("%d\n", set);
+		printf("%d\n", l);
+		for (int i=0; i<l; i++)
+			printf("%x ", buffer[i]);
+		if (l > 0) 
+			fwrite(buffer,sizeof(char), l, fout );
 		if (!set)
 			fwrite(&a1,sizeof(char), rc1, fout ); 
-		//写入文件大小信息
 		fseek(fout, 2L*sizeof(int), SEEK_SET);
 		fwrite(&count,sizeof(int), 1, fout ); 
 		fseek(fout_name, 2L*sizeof(int), SEEK_SET);
 		fwrite(&count,sizeof(int), 1, fout_name );
 		//fseek(flog, 0L, SEEK_SET);
 		fwrite(&count,sizeof(int), 1, flog ); 
-
 		printf("Encoding Finished!\n");
 		fclose(fout);
 		fclose(fout_name);

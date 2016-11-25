@@ -93,8 +93,8 @@ int main(int argc, char const *argv[])
 			printf("There are something wrong with decoding file!\n");
 		fclose(fout);
 	}
-	printf("Press any key to exit.\n");
-	_getch();
+	// printf("Press any key to exit.\n");
+	// _getch();
 	fclose(fin);
 	return 0;
 }
